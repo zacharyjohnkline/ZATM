@@ -1,0 +1,53 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+.wrapper div {
+  background-color: mediumaquamarine;
+  border-radius: 10px;
+}
+.wrapper {
+  margin: auto;
+  width: 95%;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-auto-rows: minmax(100px, auto);
+
+  grid-gap: 10px;
+  grid-template-areas:
+    "h h h"
+    "m m s"
+    "m m s"
+    "m2 m2 s"
+    "m2 m2 s"
+    "a1 a2 a3"
+    "f f f";
+}
+.header {
+  grid-area: h;
+}
+.main {
+  grid-area: m;
+}
+.main2 {
+  grid-area: m2;
+}
+.sidebar {
+  grid-area: s;
+}
+.a1 {
+  grid-area: a1;
+}
+.a2 {
+  grid-area: a2;
+}
+.a3 {
+  grid-area: a3;
+}
+.footer {
+  grid-area: f;
+}
+.sidebar {
+  grid-area: s;
+}

@@ -1,0 +1,406 @@
+@font-face {
+  font-family: "DKWHALE";
+  src: url(../fonts/DK\ Whale\ Song.otf);
+}
+@font-face {
+  font-family: "POPLAR";
+  src: url(../fonts/PoplarStd.otf);
+}
+* {
+  margin: 0;
+  padding: 0;
+  perspective: 500;
+}
+body {
+  width: 100vw;
+  height: 100vh;
+  box-sizing: border-box;
+  background-image: linear-gradient(10deg, #3831a0, #0f1641);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  align-items: center;
+}
+.youwin-message {
+  font-family: "POPLAR";
+  font-size: 6em;
+}
+.overlay-bg {
+  opacity: 0;
+  font-family: "DKWHALE";
+  z-index: -101;
+  position: absolute;
+  width: 0;
+  height: 0;
+  background-color: rgba(0, 0, 0, 90%);
+  color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.overlay-bg.too-low.visible,
+.overlay-bg.too-high.visible,
+.overlay-bg.you-win.visible {
+  opacity: 1;
+  font-family: "DKWHALE";
+  z-index: 100;
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 90%);
+  color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 0.2s, width 0.2s, height 0.2s;
+}
+.overlay-bg h1 {
+  font-size: calc(50px + 6vw);
+}
+.overlay-bg h2 {
+  font-size: 2em;
+}
+.overlay-bg p {
+  margin-top: 2em;
+  font-size: 1.5em;
+}
+.go-back {
+  text-decoration: none;
+  padding: 10px;
+  font-size: calc(10px + 1vw);
+  font-family: "DKWHALE";
+  position: absolute;
+  z-index: 101;
+  top: 3%;
+  left: 5%;
+  background-color: rgb(104, 172, 104);
+  color: white;
+  border-radius: 10px;
+  box-shadow: 0px 3px 0px green;
+}
+.title {
+  grid-column: 1 / -1;
+  position: relative;
+  z-index: 2;
+  font-family: "DKWHALE";
+  text-align: center;
+  width: 100vw;
+  background-image: linear-gradient(10deg, #3831a0, #0f1641);
+  color: white;
+  font-size: calc(20px + 5vw);
+  transition: 0.3s;
+  box-shadow: 0px 5px 0px #11101a;
+}
+.top-left {
+  position: absolute;
+  z-index: 3;
+  top: 0;
+  left: 0;
+  width: 20%;
+  transform: rotateY(180deg);
+}
+.top-right {
+  position: absolute;
+  z-index: 3;
+  top: 0;
+  right: 0;
+  width: 20%;
+}
+.game-grid {
+  width: 70%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+.game-container {
+  font-family: "POPLAR";
+  font-size: 20px;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  grid-gap: 10px;
+}
+.moon-number-container {
+  width: 100%;
+  margin-top: -20%;
+}
+.secret-number {
+  font-family: "POPLAR";
+  color: #7776b4;
+  text-align: center;
+  font-size: calc(20px + 5vw);
+  position: relative;
+  font-size: calc(20px + 20vw);
+  margin-top: -75%;
+  z-index: 100;
+}
+.moon-img {
+  width: calc(100px + 40vw);
+}
+.game-container-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: absolute;
+  width: 50%;
+  bottom: 24%;
+  z-index: 2;
+  font-size: 1em;
+}
+.game-info {
+  color: white;
+  display: flex;
+  margin-left: 10px;
+}
+.tries-counter,
+.hs-counter {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #7776b4;
+  background-color: white;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  margin-top: -10px;
+  margin-left: 20px;
+}
+.guesses-container {
+  position: absolute;
+  width: 50%;
+  bottom: 7%;
+  display: grid;
+  justify-content: center;
+  grid-template-columns: repeat(5, auto);
+  grid-gap: 10px;
+}
+.guesses {
+  text-align: center;
+  width: 20%;
+  height: 50%;
+  z-index: 3;
+  border-radius: 50%;
+  background-color: #7776b4;
+  width: 40px;
+  height: 40px;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0px 3px 0px #535283;
+}
+.guesses h2 {
+  margin-top: 3px;
+}
+.guesses:hover {
+  cursor: pointer;
+  background-color: white;
+  color: #7776b4;
+  box-shadow: 0px 3px 0px #535283;
+}
+.first.invisible,
+.second.invisible,
+.third.invisible,
+.fourth.invisible,
+.fifth.invisible,
+.sixth.invisible,
+.seventh.invisible,
+.eighth.invisible,
+.ninth.invisible,
+.tenth.invisible {
+  opacity: 0;
+  z-index: -101;
+}
+.instruction-container {
+  position: relative;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.instructions {
+  position: absolute;
+  background-color: #7776b4;
+  color: white;
+  width: calc(200px + 5vw);
+  right: 50%;
+  top: 3%;
+  border-radius: 10px;
+  text-align: center;
+  font-family: "DKWHALE";
+}
+.speech {
+  padding: 20px;
+  font-size: calc(10px + 0.8vw);
+}
+.zethan {
+  position: absolute;
+  z-index: 2;
+  bottom: 8%;
+  right: 30%;
+  width: calc(100px + 21vw);
+  animation: dance 20s linear infinite 1000ms;
+}
+.lrg-stars {
+  position: absolute;
+  z-index: -1;
+  width: 100vw;
+  height: 100vh;
+}
+.stars-container {
+  position: absolute;
+  top: 100%;
+  left: 0;
+}
+.lrg-stars img {
+  width: 70px;
+}
+.lrg-stars img:nth-child(1) {
+  position: absolute;
+  top: -50%;
+  left: 20%;
+}
+.lrg-stars img:nth-child(2) {
+  position: absolute;
+  top: -70%;
+  left: 55%;
+}
+.lrg-stars img:nth-child(3) {
+  position: absolute;
+  top: -10%;
+  left: 75%;
+}
+.lrg-stars img:nth-child(4) {
+  position: absolute;
+  top: -45%;
+  left: 65%;
+}
+.lrg-stars img:nth-child(5) {
+  position: absolute;
+  top: -35%;
+  left: 10%;
+}
+
+.med-stars {
+  position: absolute;
+  z-index: -1;
+  width: 100vw;
+  height: 100vh;
+}
+.med-stars img:nth-child(1) {
+  position: absolute;
+  top: -20%;
+  left: 20%;
+}
+.med-stars img:nth-child(2) {
+  position: absolute;
+  top: -30%;
+  left: 75%;
+}
+.med-stars img:nth-child(3) {
+  position: absolute;
+  top: -40%;
+  left: 55%;
+}
+.med-stars img:nth-child(4) {
+  position: absolute;
+  top: 8%;
+  left: 35%;
+}
+.med-stars img:nth-child(5) {
+  position: absolute;
+  top: 10%;
+  left: 69%;
+}
+.med-stars img {
+  width: 50px;
+}
+.sml-stars {
+  position: absolute;
+  z-index: -1;
+  width: 100vw;
+  height: 100vh;
+}
+.sml-stars img:nth-child(1) {
+  position: absolute;
+  top: -50%;
+  left: 15%;
+}
+.sml-stars img:nth-child(2) {
+  position: absolute;
+  top: -10%;
+  left: 17%;
+}
+.sml-stars img:nth-child(3) {
+  position: absolute;
+  top: -20%;
+  left: 45%;
+}
+.sml-stars img:nth-child(4) {
+  position: absolute;
+  top: -65%;
+  left: 50%;
+}
+.sml-stars img:nth-child(5) {
+  position: absolute;
+  top: -68%;
+  left: 65%;
+}
+.sml-stars img {
+  width: 30px;
+}
+.right-sideclouds {
+  position: absolute;
+  transform: rotateY(180deg);
+  height: 100vh;
+  left: 80vw;
+  top: 0;
+  animation: clouds-move-right 5s linear infinite;
+}
+.left-sideclouds {
+  position: absolute;
+  height: 100vh;
+  right: 80vw;
+  top: 0;
+  animation: clouds-move-left 10s linear infinite;
+}
+@keyframes dance {
+  0%,
+  100% {
+    transform: rotate(0);
+  }
+  25% {
+    transform: rotate(-5deg);
+  }
+  75% {
+    transform: rotate(5deg);
+  }
+}
+@keyframes clouds-move-right {
+  0%,
+  100% {
+    left: 82vw;
+  }
+  25% {
+    left: 81vw;
+  }
+  75% {
+    left: 80vw;
+  }
+}
+@keyframes clouds-move-left {
+  0%,
+  100% {
+    right: 80vw;
+  }
+  25% {
+    right: 81vw;
+  }
+  75% {
+    right: 82vw;
+  }
+}

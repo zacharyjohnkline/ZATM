@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="CSS/styles2.css" />
+  </head>
+  <body>
+    <h1 class="title">Zethan's Numbers</h1>
+    <img src="images/TOP_CLOUDS.svg" alt="" class="top-left" />
+    <img src="images/TOP_CLOUDS.svg" alt="" class="top-right" />
+    <div class="game-grid">
+      <div class="game-container">
+        <div class="moon-number-container">
+          <div class="moon-number">
+            <img src="images/MOON.svg" alt="" class="moon-img" />
+            <h1 class="secret-number">?</h1>
+          </div>
+        </div>
+        <div class="game-container-info">
+          <div class="game-info">
+            <h2>Tries</h2>
+            <div class="tries-counter"><h2 class="tries-number">10</h2></div>
+          </div>
+          <div class="game-info">
+            <h2>Highscore</h2>
+            <div class="hs-counter"><h2 class="hs-number">0</h2></div>
+          </div>
+        </div>
+        <div class="guesses-container">
+          <div class="guesses first">
+            <h2>1</h2>
+          </div>
+          <div class="guesses second">
+            <h2>2</h2>
+          </div>
+          <div class="guesses third">
+            <h2>3</h2>
+          </div>
+          <div class="guesses fourth">
+            <h2>4</h2>
+          </div>
+          <div class="guesses fifth">
+            <h2>5</h2>
+          </div>
+          <div class="guesses sixth">
+            <h2>6</h2>
+          </div>
+          <div class="guesses seventh">
+            <h2>7</h2>
+          </div>
+          <div class="guesses eighth">
+            <h2>8</h2>
+          </div>
+          <div class="guesses ninth">
+            <h2>9</h2>
+          </div>
+          <div class="guesses tenth">
+            <h2>10</h2>
+          </div>
+        </div>
+      </div>
+      <div class="instruction-container">
+        <div class="instructions">
+          <p class="speech">
+            I'm thinking of a number between 1 and 10. Can you guess what it is?
+          </p>
+        </div>
+        <div class="zethan-container">
+          <img src="images/ZETHAN.svg" alt="" class="zethan" />
+        </div>
+      </div>
+    </div>
+    <div class="stars-container">
+      <div class="lrg-stars">
+        <img src="images/STAR_TWINKLE.svg" alt="" />
+        <img src="images/STAR_TWINKLE.svg" alt="" />
+        <img src="images/STAR_TWINKLE.svg" alt="" />
+        <img src="images/STAR_TWINKLE.svg" alt="" />
+        <img src="images/STAR_TWINKLE.svg" alt="" />
+      </div>
+      <div class="med-stars">
+        <img src="images/STAR_TWINKLE.svg" alt="" />
+        <img src="images/STAR_TWINKLE.svg" alt="" />
+        <img src="images/STAR_TWINKLE.svg" alt="" />
+        <img src="images/STAR_TWINKLE.svg" alt="" />
+        <img src="images/STAR_TWINKLE.svg" alt="" />
+      </div>
+      <div class="sml-stars">
+        <img src="images/STAR_TWINKLE.svg" alt="" />
+        <img src="images/STAR_TWINKLE.svg" alt="" />
+        <img src="images/STAR_TWINKLE.svg" alt="" />
+        <img src="images/STAR_TWINKLE.svg" alt="" />
+        <img src="images/STAR_TWINKLE.svg" alt="" />
+      </div>
+    </div>
+    <img src="images/SIDE_CLOUDS.svg" alt="" class="left-sideclouds" />
+    <img src="images/SIDE_CLOUDS.svg" alt="" class="right-sideclouds" />
+    <a href="index.html" class="go-back">exit</a>
+    <div class="overlay-bg too-low">
+      <h1 class="message toolow-message">TOO SMALL!</h1>
+      <h2>Try a BIGGER number!</h2>
+      <p>click anywhere to guess again.</p>
+    </div>
+    <div class="overlay-bg too-high">
+      <h1 class="message toohigh-message">TOO BIG!</h1>
+      <h2>Try a SMALLER number!</h2>
+      <p>click anywhere to guess again.</p>
+    </div>
+    <div class="overlay-bg you-win">
+      <h1 class="message youwin-message">HOORAY!</h1>
+      <h2 class="winner-screen">That was the number! CONGRATULATIONS!</h2>
+      <p>click anywhere to play again.</p>
+    </div>
+    <script src="JS/script2.js"></script>
+  </body>
+</html>
